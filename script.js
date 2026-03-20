@@ -227,35 +227,30 @@ mm.add("(max-width: 900px)", () => {
         }
     });
 
-    // 2. Mobile Interest Cards Slide-in from Sides
-    const cards = gsap.utils.toArray('.interest-card');
-    cards.forEach((card, i) => {
+    // 2. Mobile Eye Candy: 3D Tilt on Scroll for Cards
+    const allCards = gsap.utils.toArray('.interest-card, .glass-card');
+    allCards.forEach(card => {
+        // Perspective wrapper setup
+        gsap.set(card.parentNode, { perspective: 800 });
+        
         gsap.fromTo(card, 
             { 
-                x: i % 2 === 0 ? -100 : 100, // Alternate sides
-                opacity: 0 
+                rotationX: -15, // Tilt back
+                opacity: 0.2,
+                transformOrigin: "center center"
             },
             {
-                x: 0,
+                rotationX: 15, // Tilt forward as it leaves view
                 opacity: 1,
-                duration: 1,
-                ease: "back.out(1.7)",
+                ease: "none",
                 scrollTrigger: {
                     trigger: card,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
+                    start: 'top 95%',
+                    end: 'bottom 5%',
+                    scrub: true
                 }
             }
         );
-    });
-
-    // 3. Floating effect on the About visual glass card for mobile
-    gsap.to('.glass-card', {
-        y: 15,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
     });
 });
 
@@ -319,4 +314,36 @@ if(contactBtn) {
             ease: 'elastic.out(1, 0.3)'
         });
     });
+}
+
+// --- Mobile Eye Candy: Touch Explosion Ripple ---
+// Only active on touch devices to give mobile users an interactive treat
+if (window.matchMedia("(pointer: coarse)").matches) {
+    document.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        
+        // Spawn a new ripple element
+        const ripple = document.createElement('div');
+        ripple.classList.add('touch-ripple');
+        document.body.appendChild(ripple);
+        
+        gsap.set(ripple, {
+            left: touch.clientX,
+            top: touch.clientY,
+            width: 10,
+            height: 10
+        });
+        
+        // Animate the ripple expanding and fading out
+        gsap.to(ripple, {
+            width: 150,
+            height: 150,
+            opacity: 0,
+            duration: 0.6,
+            ease: "circ.out",
+            onComplete: () => {
+                ripple.remove();
+            }
+        });
+    }, {passive: true});
 }

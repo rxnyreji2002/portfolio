@@ -90,7 +90,7 @@ body {
     transition: width 0.3s, height 0.3s, border-color 0.3s;
 }
 
-/* Cursor Hover State Classes */
+/* Cursor Hover State Classes */    
     .cursor.hover {
         width: 60px;
         height: 60px;
@@ -101,6 +101,24 @@ body {
         width: 80px;
         height: 80px;
         border-color: transparent;
+    }
+
+    /* Hide custom cursor on touch devices (mobile/tablet) */
+    @media (pointer: coarse) {
+        .cursor, .cursor-follower {
+            display: none !important;
+        }
+    }
+
+    /* Mobile Eye Candy: Touch Glow/Ripple */
+    .touch-ripple {
+        position: fixed;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 70%);
+        transform: translate(-50%, -50%) scale(0);
+        pointer-events: none;
+        z-index: 99999;
+        mix-blend-mode: screen;
     }
     
     /* Preloader */
@@ -494,14 +512,16 @@ a {
     color: var(--accent);
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media screen and (max-width: 900px) {
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
     
     .interests-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .nav-links {
@@ -510,6 +530,7 @@ a {
     
     .hero-title {
         font-size: 15vw;
+        flex-wrap: wrap; /* allow wrapping on super narrow */
     }
     
     .section-title {
@@ -518,5 +539,46 @@ a {
     
     .glass-card {
         grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+    
+    .card-stat h3 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 0 8%;
+    }
+    
+    .hero-title {
+        font-size: 18vw;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+    }
+
+    .about {
+        padding: 5rem 0;
+    }
+    
+    .interests {
+        padding: 5rem 0;
+    }
+    
+    .footer {
+        padding: 5rem 0 2rem;
+    }
+    
+    .footer-title {
+        font-size: 10vw;
+    }
+    
+    .card-badge {
+        font-size: 1rem;
+        padding: 0.8rem;
     }
 }

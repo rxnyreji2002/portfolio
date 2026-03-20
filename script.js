@@ -159,7 +159,7 @@ window.addEventListener('load', () => {
     // Objects skew dynamically based on scroll velocity
     let proxy = { skew: 0 },
         skewSetter = gsap.quickSetter(".gs-fade, .interest-card", "skewY", "deg"),
-        clamp = gsap.utils.clamp(-2, 3); // Subtly clamped
+        clamp = gsap.utils.clamp(-2, 3); // Subtly clampe
 
     ScrollTrigger.create({
         onUpdate: (self) => {
@@ -173,9 +173,9 @@ window.addEventListener('load', () => {
 
     // --- Footer Advanced Animations ---
     // Smooth Scale 'n Slide reveal for entire footer content
-    gsap.fromTo('.footer-content', 
+    gsap.fromTo('.footer-content',
         { y: 150, scale: 0.9, opacity: 0 },
-        { 
+        {
             y: 0, scale: 1, opacity: 1,
             ease: 'power3.out',
             scrollTrigger: {

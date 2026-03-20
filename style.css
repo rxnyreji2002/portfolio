@@ -91,19 +91,53 @@ body {
 }
 
 /* Cursor Hover State Classes */
-.cursor.hover {
-    width: 60px;
-    height: 60px;
-    background: rgba(212, 175, 55, 0.1);
-    mix-blend-mode: exclusion;
-}
-.cursor-follower.hover {
-    width: 80px;
-    height: 80px;
-    border-color: transparent;
-}
-
-/* Utilities */
+    .cursor.hover {
+        width: 60px;
+        height: 60px;
+        background: rgba(212, 175, 55, 0.1);
+        mix-blend-mode: exclusion;
+    }
+    .cursor-follower.hover {
+        width: 80px;
+        height: 80px;
+        border-color: transparent;
+    }
+    
+    /* Preloader */
+    .preloader {
+        position: fixed;
+        inset: 0;
+        background-color: #050505;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-primary);
+    }
+    
+    .preloader-content {
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    .preloader-title {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        margin-bottom: 1rem;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); /* Hidden by default */
+    }
+    
+    .preloader-counter {
+        font-size: 5rem;
+        font-weight: 300;
+        font-family: var(--font-heading);
+        opacity: 0; /* Hidden initially */
+    }
+    
+    /* Utilities */
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -173,22 +207,27 @@ a {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 10vw;
+    font-size: 12vw;
     font-weight: 800;
-    line-height: 1;
+    line-height: 0.9;
     letter-spacing: -0.04em;
     display: flex;
     justify-content: center;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    position: relative;
 }
 
-.char-wrap {
+.hero-title .char {
     display: inline-block;
-    overflow: hidden;
+    transform: translateY(110%) rotate(10deg); /* Aggressive starting angle for Awwward style */
+    transform-origin: bottom left;
+    transition: color 0.5s ease;
 }
 
-.char {
-    display: inline-block;
-    transform: translateY(100%); /* Animated up with GSAP */
+.hero-title:hover .char {
+    color: var(--text-primary);
+    -webkit-text-stroke: 1px transparent;
 }
 
 .scroll-indicator {

@@ -72,28 +72,89 @@ hoverTargets.forEach(target => {
     });
 });
 
-// --- Page Load Animations (Hero Section) ---
+// --- Preloader & Hero Sequence ---
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
 
-    // Animate Title characters
-    tl.to('.char', {
-        y: '0%',
+    // 1. Reveal Preloader Title & Counter
+    tl.to('.preloader-title', {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
         duration: 1,
-        ease: 'power4.out',
-        stagger: 0.05,
+        ease: 'power4.inOut'
+    })
+    .to('.preloader-counter', {
+        opacity: 1,
+        duration: 0.5
+    }, "-=0.5");
+
+    // 2. Animate Counter from 0 to 100
+    const counterElement = document.querySelector('.preloader-counter');
+    let progress = { val: 0 };
+    tl.to(progress, {
+        val: 100,
+        duration: 2,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+            if(counterElement) {
+                counterElement.innerHTML = Math.round(progress.val) + "%";
+            }
+        }
+    });
+
+    // 3. Slide Preloader Up
+    tl.to('.preloader', {
+        yPercent: -100,
+        duration: 1.2,
+        ease: 'expo.inOut',
         delay: 0.2
     });
 
-    // Reveal Subtitle & Scroll Indicator
+    // 4. Hero Animations (Aggressive Awwwards-style entry)
+    tl.to('.char', {
+        y: '0%',
+        rotate: 0,
+        color: '#ededed',
+        webkitTextStroke: '1px transparent',
+        duration: 1.5,
+        ease: 'expo.out',
+        stagger: 0.05
+    }, "-=0.6");
+
+    // 5. Hero Subtitle & Indicator
     tl.to('.gs-reveal', {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 1.5,
         ease: 'power3.out',
         stagger: 0.2
-    }, "-=0.5");
+    }, "-=1");
+    
+    // Switch text back to stroke style after entry is done
+    tl.to('.char', {
+        color: 'transparent',
+        webkitTextStroke: '1px rgba(255, 255, 255, 0.2)',
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.05
+    });
+
+    // --- Scroll Skew Effect (Advanced Awwwards feel) ---
+    // Objects skew dynamically based on scroll velocity
+    let proxy = { skew: 0 },
+        skewSetter = gsap.quickSetter(".gs-fade, .interest-card", "skewY", "deg"), 
+        clamp = gsap.utils.clamp(-15, 15); 
+    
+    ScrollTrigger.create({
+      onUpdate: (self) => {
+        let skew = clamp(self.getVelocity() / -200);
+        if (Math.abs(skew) > Math.abs(proxy.skew)) {
+          proxy.skew = skew;
+          gsap.to(proxy, {skew: 0, duration: 0.8, ease: "power3", overwrite: true, onUpdate: () => skewSetter(proxy.skew)});
+        }
+      }
+    });
 });
+
 
 // --- Base ScrollTrigger Animations ---
 

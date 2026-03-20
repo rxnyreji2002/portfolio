@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rony Reji | Audit Professional & Explorer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis (Smooth Scroll) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Noise Overlay for Texture -->
+    <div class="noise-overlay"></div>
+
+    <main class="main-container">
+        
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-logo">RR.</div>
+            <div class="nav-links">
+                <a href="#about" class="hover-target">About</a>
+                <a href="#interests" class="hover-target">Interests</a>
+                <a href="#contact" class="hover-target">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="hero-subtitle gs-reveal">Audit Professional & Creative Explorer</p>
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-title">
+                        <span class="char-wrap"><span class="char">R</span></span>
+                        <span class="char-wrap"><span class="char">O</span></span>
+                        <span class="char-wrap"><span class="char">N</span></span>
+                        <span class="char-wrap"><span class="char">Y</span></span>
+                        <span class="char-wrap title-space"><span class="char">&nbsp;</span></span>
+                        <span class="char-wrap"><span class="char">R</span></span>
+                        <span class="char-wrap"><span class="char">E</span></span>
+                        <span class="char-wrap"><span class="char">J</span></span>
+                        <span class="char-wrap"><span class="char">I</span></span>
+                    </h1>
+                </div>
+                <div class="scroll-indicator gs-reveal">
+                    <span>Scroll to explore</span>
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2 class="section-title gs-fade">Numbers with Precision.<br>Life with Passion.</h2>
+                        <p class="gs-fade">I'm currently crunching numbers and ensuring excellence as an <strong>Audit Staff at EY</strong>. With an educational foundation in BCom, ACCA, and MBA, I bring rigorous analytical thinking to the table.</p>
+                        <p class="gs-fade">Beyond the spreadsheets—though I am a self-proclaimed <em>Excel nerd</em>—I thrive on finding clarity in complex data and systems.</p>
+                    </div>
+                    <div class="about-visual gs-fade">
+                        <div class="glass-card">
+                            <div class="card-stat">
+                                <h3>BCom</h3>
+                                <span>Foundation</span>
+                            </div>
+                            <div class="card-stat">
+                                <h3>ACCA</h3>
+                                <span>Expertise</span>
+                            </div>
+                            <div class="card-stat">
+                                <h3>MBA</h3>
+                                <span>Strategy</span>
+                            </div>
+                            <div class="card-badge">EY Audit Staff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section class="interests" id="interests">
+            <div class="marquee-container gs-fade">
+                <div class="marquee">
+                    <span class="marquee-text">COFFEE LOVER &nbsp; • &nbsp; FITNESS NERD &nbsp; • &nbsp; PRODUCTIVITY SEEKER &nbsp; • &nbsp; ALWAYS EXPLORING &nbsp; • &nbsp; </span>
+                    <span class="marquee-text">COFFEE LOVER &nbsp; • &nbsp; FITNESS NERD &nbsp; • &nbsp; PRODUCTIVITY SEEKER &nbsp; • &nbsp; ALWAYS EXPLORING &nbsp; • &nbsp; </span>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="interests-grid">
+                    <div class="interest-card gs-fade hover-target">
+                        <div class="icon">☕</div>
+                        <h3>Coffee</h3>
+                        <p>Fueling audits and late-night creative sprints, one perfect pour-over at a time.</p>
+                    </div>
+                    <div class="interest-card gs-fade hover-target" style="transition-delay: 0.1s;">
+                        <div class="icon">🏋️</div>
+                        <h3>Fitness</h3>
+                        <p>Building discipline and resilience through regular workouts and physical goals.</p>
+                    </div>
+                    <div class="interest-card gs-fade hover-target" style="transition-delay: 0.2s;">
+                        <div class="icon">⚡</div>
+                        <h3>Productivity</h3>
+                        <p>Optimizing workflows, whether in Excel macros or daily life habits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="container">
+                <div class="footer-content gs-fade">
+                    <h2 class="footer-title">Let's Connect</h2>
+                    <p>Always open to discussing finance, new ideas, or your favorite coffee beans.</p>
+                    <a href="mailto:rony@example.com" class="contact-btn hover-target">Say Hello</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Rony Reji. Premium & Minimal.</p>
+                    <div class="socials">
+                        <a href="#" class="hover-target">LinkedIn</a>
+                        <a href="#" class="hover-target">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
